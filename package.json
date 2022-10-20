@@ -1,7 +1,7 @@
 {
   "name": "pinephone",
   "type": "commonjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices",
   "main": "./build/pinephone.js",
   "files": [
@@ -19,7 +19,17 @@
     "type": "git",
     "url": "git+https://github.com/BraidenPsiuk/pinephone.js.git"
   },
-  "keywords": ["nodejs", "javascript", "connectivity", "node-js", "pine64", "pinephone", "mobian", "manjaro-arm", "pinephone-pro"],
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "connectivity",
+    "node-js",
+    "pine64",
+    "pinephone",
+    "mobian",
+    "manjaro-arm",
+    "pinephone-pro"
+  ],
   "author": "BRAIDEN S. PSIUK <mail@braiden.dev> (https://braiden.dev)",
   "license": "GPL-3.0",
   "bugs": {
