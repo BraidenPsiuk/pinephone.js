@@ -1,8 +1,12 @@
-const fs = require("fs");
+'use strict';
+
+var fs = require('node:fs');
+
+// const fs = require("fs");
 
 
 
-export const getModelId = (discardVersionNumber) => {
+const getModelId = (discardVersionNumber) => {
 // PinePhone MODEL strings (returned from "cat /sys/firmware/devicetree/base/model")
 // OG PP V1.1 (non-braveheart... Comunity Edition, CE?) = ?
 // OG PP V1.2 (non-braveheart... Comunity Edition, CE?) = "Pine64 PinePhone (1.2)"
@@ -30,3 +34,5 @@ export const getModelId = (discardVersionNumber) => {
 console.warn("\n---------[ PINEPHONE.JS - WARNING ]---------");
 console.warn("This is an early version of pinephone.js,\nthe API may change during this time!");
 console.warn("--------------------------------------------\n");
+
+exports.getModelId = getModelId;
