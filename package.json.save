@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/BraidenPsiuk/pinephone.js.git"
   },
-  "keywords": ["nodejs", "javascript", "connectivity", "node-js", "pine64", "pinephone", "mobian", "manjaro-arm", "pinephone-pro"],
+  "keywords": [nodejs javascript binary daemon bluetooth ble bluetooth-low-energy connectivity node-js bluetooth-le pine64 espruino purism pinephone banglejs librem5 mobian manjaro-arm pinephone-pro banglejs2],
   "author": "BRAIDEN S. PSIUK <mail@braiden.dev> (https://braiden.dev)",
   "license": "GPL-3.0",
   "bugs": {
