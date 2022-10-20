@@ -1,0 +1,34 @@
+{
+  "name": "pinephone",
+  "version": "0.0.3",
+  "description": "JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices",
+  "module": "./build/pinephone.es.js",
+  "main": "./build/pinephone.umd.js",
+  "files": [
+    "build"
+  ],
+  "exports": {
+    ".": {
+      "import": "./build/pinephone.es.js",
+      "require": "./build/pinephone.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "postbuild": "node ./npm-scripts/post-build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BraidenPsiuk/pinephone.js.git"
+  },
+  "keywords": [],
+  "author": "BRAIDEN S. PSIUK <mail@braiden.dev> (https://braiden.dev)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/BraidenPsiuk/pinephone.js/issues"
+  },
+  "homepage": "https://github.com/BraidenPsiuk/pinephone.js#readme",
+  "devDependencies": {
+    "vite": "^2.6.14"
+  }
+}
