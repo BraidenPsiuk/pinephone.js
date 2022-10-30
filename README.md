@@ -15,7 +15,7 @@ This is a tiny JavaScript library which provides a consistent API for fetching d
 ![Minified File Size](https://img.shields.io/github/size/BraidenPsiuk/pinephone.js/build/pinephone.min.js?label=minified%20size)
 ![License](https://img.shields.io/github/license/BraidenPsiuk/pinephone.js)
 
-#### **WARNING:** This is an early version of pinephone.js, the API may change during this time! IntelliSense/TS definitions are also not available yet.
+### **WARNING:** This is an early version of pinephone.js, the API may change during this time!
 
 ---
 
