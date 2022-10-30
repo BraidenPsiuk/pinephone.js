@@ -22,12 +22,11 @@ try {
     fileContents = fileContents.toString();
     console.log("Successfully read file");
     fileContents = fileContents.replace("# pinephone.js (NPM)","# pinephone.js (GitHub)");
-    console.log(fileContents);
 } catch { throw new Error("Failed to read file") }
 
 try {
     await writeFile(DEST_FILE_RELATIVE_PATH, fileContents);
-    console.log("Successfully copied file");
+    console.log("Successfully wrote file");
 } catch { throw new Error("Failed to copy file") }
 
 
