@@ -44,10 +44,5 @@ const getBluetoothInfo = () => {
     return JSON.parse(node_child_process.execSync("rfkill -J"))["rfkilldevices"][0];
 };
 
-// TODO: Remove once mature enough, rewrite using async fs calls, split into different files
-console.warn("\n---------[ PINEPHONE.JS - WARNING ]---------");
-console.warn("This is an early version of pinephone.js,\nthe API may change during this time!");
-console.warn("--------------------------------------------\n");
-
 exports.getBluetoothInfo = getBluetoothInfo;
 exports.getDeviceInfo = getDeviceInfo;
