@@ -17,7 +17,8 @@
   "scripts": {
     "build": "rollup -c utils/build/rollup.config.js",
     "postbuild": "node npm-scripts/post-build.mjs",
-    "build-legacy": "rollup ./src/pinephone.js --file ./build/pinephone.js --format cjs"
+    "build-legacy": "rollup ./src/pinephone.js --file ./build/pinephone.js --format cjs",
+    "sign": "echo 'sign' | gpg --clearsign"
   },
   "repository": {
     "type": "git",
