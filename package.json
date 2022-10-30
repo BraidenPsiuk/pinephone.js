@@ -1,19 +1,23 @@
 {
   "name": "pinephone",
-  "type": "commonjs",
+  "type": "module",
   "version": "0.1.1",
   "description": "JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices",
-  "main": "./build/pinephone.js",
+  "main": "./build/pinephone.cjs",
+  "module": "./build/pinephone.module.js",
   "files": [
     "build"
   ],
   "exports": {
     ".": {
-      "require": "./build/pinephone.js"
+      "import": "./build/pinephone.module.js",
+      "require": "./build/pinephone.cjs"
     }
   },
   "scripts": {
-    "build": "rollup ./src/pinephone.js --file ./build/pinephone.js --format cjs"
+    "build": "rollup -c utils/build/rollup.config.js",
+    "postbuild": "node npm-scripts/post-build.mjs",
+    "build-legacy": "rollup ./src/pinephone.js --file ./build/pinephone.js --format cjs"
   },
   "repository": {
     "type": "git",
@@ -37,6 +41,8 @@
   },
   "homepage": "https://github.com/BraidenPsiuk/pinephone.js#readme",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.1.0",
     "rollup": "^3.2.3"
   }
 }

@@ -1,11 +1,12 @@
-import fs from "node:fs";
-import { execSync } from "node:child_process";
+import fs from 'node:fs';
+import { execSync } from 'node:child_process';
+
 // const cp = require('node:child_process');
 // const fs = require("fs");
 
 
 
-export const getDeviceInfo = ({
+const getModelId = ({
     includeVersionNumber = true
 }={}) => {
 // PinePhone MODEL strings (returned from "cat /sys/firmware/devicetree/base/model")
@@ -34,7 +35,7 @@ export const getDeviceInfo = ({
     return modelId;
 };
 
-export const getBluetoothInfo = () => {
+const getBluetoothInfo = () => {
     // Uses rfkill CLI with JSON flag
     // Needs rewritten to also get WiFi info
     // Should not assume Bluetooth is always at position 0, change this
@@ -45,3 +46,5 @@ export const getBluetoothInfo = () => {
 console.warn("\n---------[ PINEPHONE.JS - WARNING ]---------");
 console.warn("This is an early version of pinephone.js,\nthe API may change during this time!");
 console.warn("--------------------------------------------\n");
+
+export { getBluetoothInfo, getModelId };

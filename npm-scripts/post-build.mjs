@@ -1,20 +1,35 @@
-// import { readdir } from 'fs/promises';
+import { readFile, writeFile, copyFile } from "node:fs/promises";
+import * as path from "node:path";
 
-// const generateDocs = async () => {
-//     const exampleFolders = await readdir("./examples/");
-//     for (const exampleFiles of exampleFolders) {
-//         const folder = await readdir(`./examples/${exampleFiles}/`);
-//         console.log(folder);
-//     }
-//     // Maybe switch to using recursion here in case of complex examples, Three even does this, I confirmed!
 
-//     const exampleArr = [];
-//     const docs = {
-//         numberOfExamples: exampleFolders.length,
-//         examples: exampleArr
-//     };
-// };
 
-// generateDocs().then(thing=>{
-//     console.log(thing);
-// });
+console.log("Running postbuild...");
+console.log("Generatig README.md for GitHub...");
+
+
+
+const SRC_FILE_RELATIVE_PATH = path.normalize("./README.md");
+const DEST_FILE_RELATIVE_PATH = path.normalize("./.github/README.md");
+let fileContents = "";
+
+try {
+    await copyFile(SRC_FILE_RELATIVE_PATH, DEST_FILE_RELATIVE_PATH);
+    console.log("Successfully copied file");
+} catch { throw new Error("Failed to copy file") }
+
+try {
+    fileContents = await readFile(DEST_FILE_RELATIVE_PATH, "utf-8");
+    fileContents = fileContents.toString();
+    console.log("Successfully read file");
+    fileContents = fileContents.replace("# pinephone.js (NPM)","# pinephone.js (GitHub)");
+    console.log(fileContents);
+} catch { throw new Error("Failed to read file") }
+
+try {
+    await writeFile(SRC_FILE_RELATIVE_PATH, DEST_FILE_RELATIVE_PATH);
+    console.log("Successfully copied file");
+} catch { throw new Error("Failed to copy file") }
+
+
+
+console.log("Postbuild script complete");
