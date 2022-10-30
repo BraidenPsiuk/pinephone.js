@@ -63,4 +63,4 @@ console.log( pinephone.getBluetoothInfo() )
 // }
 ```
 
-*TEST PGP SIGNING*
+*TEST PGP SIGNING 2*
