@@ -62,5 +62,3 @@ console.log( pinephone.getBluetoothInfo() )
 //   hard: 'unblocked'
 // }
 ```
-
-*TEST PGP SIGNING 2*
