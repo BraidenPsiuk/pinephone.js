@@ -5,13 +5,13 @@
 
 This is a tiny JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices.
 
-![Supported Phones](https://img.shields.io/badge/Supported%20Phones%3A-PinePhone,%20PinePhone%20Pro-brightgreen)
+![supported devices](https://img.shields.io/badge/Supported%20Phones%3A-PinePhone,%20PinePhone%20Pro-brightgreen)
 
 <!-- ![Working Features](https://img.shields.io/badge/Working%20Features%3A-Getting%20basic%20device%20information,%20Getting%20bluetooth%20information-brightgreen)
 ![Features in Development](https://img.shields.io/badge/Features%20in%20Development:-Getting%20accel%20data,%20Getting%20gyro%20data,%20Getting%20compass%20data-red) -->
 
 ![GitHub Repo Stars](https://img.shields.io/github/stars/BraidenPsiuk/fixar.js?color=yellow)
-![Module Types](https://img.shields.io/badge/Module%20Types%3A-cjs,%20esm-blue)
+![Module Types](https://img.shields.io/badge/module%20types%3A-cjs,%20esm-blue)
 ![Minified File Size](https://img.shields.io/github/size/BraidenPsiuk/pinephone.js/build/pinephone.min.js?label=minified%20size)
 ![License](https://img.shields.io/github/license/BraidenPsiuk/pinephone.js)
 

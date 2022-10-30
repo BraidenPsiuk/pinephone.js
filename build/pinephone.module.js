@@ -6,7 +6,7 @@ import { execSync } from 'node:child_process';
 
 
 
-const getModelId = ({
+const getDeviceInfo = ({
     includeVersionNumber = true
 }={}) => {
 // PinePhone MODEL strings (returned from "cat /sys/firmware/devicetree/base/model")
@@ -47,4 +47,4 @@ console.warn("\n---------[ PINEPHONE.JS - WARNING ]---------");
 console.warn("This is an early version of pinephone.js,\nthe API may change during this time!");
 console.warn("--------------------------------------------\n");
 
-export { getBluetoothInfo, getModelId };
+export { getBluetoothInfo, getDeviceInfo };

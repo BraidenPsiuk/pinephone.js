@@ -8,7 +8,7 @@ var node_child_process = require('node:child_process');
 
 
 
-const getModelId = ({
+const getDeviceInfo = ({
     includeVersionNumber = true
 }={}) => {
 // PinePhone MODEL strings (returned from "cat /sys/firmware/devicetree/base/model")
@@ -50,4 +50,4 @@ console.warn("This is an early version of pinephone.js,\nthe API may change duri
 console.warn("--------------------------------------------\n");
 
 exports.getBluetoothInfo = getBluetoothInfo;
-exports.getModelId = getModelId;
+exports.getDeviceInfo = getDeviceInfo;

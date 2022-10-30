@@ -26,7 +26,7 @@ try {
 } catch { throw new Error("Failed to read file") }
 
 try {
-    await writeFile(SRC_FILE_RELATIVE_PATH, DEST_FILE_RELATIVE_PATH);
+    await writeFile(DEST_FILE_RELATIVE_PATH, fileContents);
     console.log("Successfully copied file");
 } catch { throw new Error("Failed to copy file") }
 
