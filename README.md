@@ -1,7 +1,7 @@
 # pinephone.js (NPM)
 
 <!-- ![Project Logo](/img/logo.png) -->
-<img src="https://braiden.dev/public/projects/pinephone-js/img/logo-with-text.png" style="width: 100%;">
+<img src="https://raw.githubusercontent.com/BraidenPsiuk/pinephone.js/master/img/logo-with-text.png" style="width: 100%;">
 
 This is a tiny JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices.
 
