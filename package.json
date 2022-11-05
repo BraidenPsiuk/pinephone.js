@@ -1,7 +1,7 @@
 {
   "name": "pinephone",
   "type": "module",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices",
   "main": "./build/pinephone.cjs",
   "module": "./build/pinephone.module.js",
@@ -17,7 +17,6 @@
   "scripts": {
     "build": "rollup -c utils/build/rollup.config.js",
     "sign": "echo 'sign' | gpg --clearsign",
-    
     "postbuild": "node npm-scripts/post-build.mjs"
   },
   "repository": {
