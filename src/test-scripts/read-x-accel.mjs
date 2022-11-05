@@ -1,4 +1,4 @@
-const fs = require("node:fs");
+import * as fs from "node:fs";
 
 const SENSOR_TYPE = "iio:device2/in_accel";
 const AXIS = "x";
