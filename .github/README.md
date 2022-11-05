@@ -31,34 +31,68 @@ const pinephone = require('pinephone')
 import * as pinephone from 'pinephone'
 
 // ES Module, import only what's needed (allows tree-shaking)
-import { getDeviceInfo, getBluetoothInfo } from 'pinephone'
+import { getModelName, getBluetoothStatus } from 'pinephone'
 ```
 
 ### Getting basic device information
-Getting device info is simple. By default, version numbers are included as well. If you just want to know if the device is an OG PinePhone or a Pro, pass in an object with the *includeVersionNumber* key set to false.
+If you just want to know if the device is an OG PinePhone or a Pro, use the following:
 ```javascript
-// Print the device type and version
-// (This is identical to the "Host" string in Neofetch)
-console.log( pinephone.getDeviceInfo() )
-// example output -> 'Pine64 PinePhone (1.2)', 'Pine64 PinePhonePro', etc...
-
-// The OG PinePhone includes a version number, you can choose
-// to exclude it if you wish
-// (The PPP Explorer Edition does not include a version number)
-console.log( pinephone.getDeviceInfo({includeVersionNumber: false}) )
-// example output -> 'Pine64 PinePhone' OR 'Pine64 PinePhonePro'
+console.log( pinephone.getModelName() )
+// output -> 'Pine64 PinePhone' OR 'Pine64 PinePhonePro'
 ```
-
-### Getting bluetooth software and hardware switch states
-Find out if Bluetooth is enabled or disabled, both at the software level and also the hardware level via the kill switch located inside the back cover of the phone.
+You can also get the version (helps to identify the phone's mainboard):
 ```javascript
-console.log( pinephone.getBluetoothInfo() )
-// example output -> (Object):
+console.log( pinephone.getModelVersion() )
+// output -> '1.0', '1.1', '1.2', etc...
+```
+If you want these values returned as an object:
+```javascript
+console.log( pinephone.getDeviceInfo() )
+// output -> (example Object):
 // {
-//   id: 1,
-//   type: 'bluetooth',
-//   device: 'hci0',
-//   soft: 'unblocked',
-//   hard: 'unblocked'
+//   modelName: 'Pine64 PinePhonePro',
+//   modelVersion: '1.0'
 // }
 ```
+If you want to hand-pick returned values, you can pass an array of constants like this (see [full list of options](https://github.com/BraidenPsiuk/pinephone.js/blob/master/src/constants.js)):
+```javascript
+console.log(pinephone.getDeviceInfo( [pinephone.Model_VersionNumber] ))
+// output -> (example Object):
+// {
+//   modelVersion: '1.0'
+// }
+```
+
+### Getting WiFi / Bluetooth statuses
+Find out if WiFi or Bluetooth are enabled, both at the software level and also the hardware level (via the kill switch located inside the back cover of the phone).
+```javascript
+console.log( pinephone.getBluetoothStatus() )
+// output -> (example Object):
+// {
+//   softwareEnabled: false,
+//   hardwareEnabled: true
+// }
+
+console.log( pinephone.getWifiStatus() )
+// output -> (example Object):
+// {
+//   softwareEnabled: false,
+//   hardwareEnabled: false
+// }
+```
+### Enabling or disabling WiFi / Bluetooth
+This one is pretty self-explanitory. Just remember not to test disabling WiFi if you are connected to the phone via SSH!
+```javascript
+pinephone.enableWifi();
+pinephone.disableWifi();
+
+pinephone.enableBluetooth();
+pinephone.disableBluetooth();
+```
+
+### Getting sensor data
+Sensor data is accessed via EventEmitter events. By default, sensors are sampled every 50ms.
+
+Reading sensor data is **currently not implemented** in this version of pinephone.js, but the feature will be made available very soon.
+
+See *src/test-scripts/read-x-accel.mjs* for example code if you are curious and want to implement something right away.
