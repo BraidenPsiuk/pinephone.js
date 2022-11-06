@@ -1,7 +1,7 @@
 {
   "name": "pinephone",
   "type": "module",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices",
   "main": "./build/pinephone.cjs",
   "module": "./build/pinephone.module.js",
