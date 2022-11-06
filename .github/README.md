@@ -33,7 +33,13 @@ import * as pinephone from 'pinephone'
 import { getModelName, getBluetoothStatus } from 'pinephone'
 ```
 
-### Getting basic device information
+### Basic usage example
+```javascript
+// Usage example still needed
+// See below for other examples
+```
+
+### Getting device information
 If you just want to know if the device is an OG PinePhone or a Pro, use the following:
 ```javascript
 console.log( pinephone.getModelName() )
@@ -65,28 +71,30 @@ console.log(pinephone.getDeviceInfo( [pinephone.Model_VersionNumber] ))
 ### Getting WiFi / Bluetooth statuses
 Find out if WiFi or Bluetooth are enabled, both at the software level and also the hardware level (via the kill switch located inside the back cover of the phone).
 ```javascript
+console.log( pinephone.getWifiStatus() )
+// output -> (example Object):
+// {
+//   softwareEnabled: true,
+//   hardwareEnabled: true
+// }
+
 console.log( pinephone.getBluetoothStatus() )
 // output -> (example Object):
 // {
 //   softwareEnabled: false,
 //   hardwareEnabled: true
 // }
-
-console.log( pinephone.getWifiStatus() )
-// output -> (example Object):
-// {
-//   softwareEnabled: false,
-//   hardwareEnabled: false
-// }
 ```
 ### Enabling or disabling WiFi / Bluetooth
 This one is pretty self-explanitory. Just remember not to test disabling WiFi if you are connected to the phone via SSH!
 ```javascript
-pinephone.enableWifi();
-pinephone.disableWifi();
+// Controlling WiFi (software)
+pinephone.enableWifi()
+pinephone.disableWifi()
 
-pinephone.enableBluetooth();
-pinephone.disableBluetooth();
+// Controlling Bluetooth (software)
+pinephone.enableBluetooth()
+pinephone.disableBluetooth()
 ```
 
 ### Getting sensor data
@@ -100,7 +108,7 @@ See *src/test-scripts/read-x-accel.mjs* for example code if you are curious and 
 
 ## Additional Information:
 
-### Regarding bun
+### Regarding Bun
 [Bun](https://bun.sh/) is semi-supported. Getting basic device information works, and reading sensor data will also work once that is implemented, however anything involving rfkill under the hood will fail, such as reading and setting WiFi/Bluetooth states. This is because Bun hasn't implemented node's child_process API yet, and they likely won't until a clean solution is able to be implemented.
 
 Until that happens, the only possible solutions I see are to manually implement what goes on in rfkill inside pinephone.js, which would be quite time-consuming. The other option would be to use a utility shim such as [this](https://github.com/xHyroM/bun-utilities), which allows for using exec. A fork of pinephone.js with this patch might be a good middle-ground.
