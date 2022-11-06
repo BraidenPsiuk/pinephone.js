@@ -16,7 +16,7 @@ This is a tiny JavaScript library which provides a consistent API for fetching d
 ![License](https://img.shields.io/github/license/BraidenPsiuk/pinephone.js)
 ![Donations](https://img.shields.io/liberapay/receives/Braiden.svg?logo=liberapay)
 
----
+
 
 ## Examples:
 
@@ -96,7 +96,7 @@ Reading sensor data is **currently not implemented** in this version of pinephon
 
 See *src/test-scripts/read-x-accel.mjs* for example code if you are curious and want to implement something right away.
 
----
+
 
 ## Additional Information:
 
@@ -107,14 +107,14 @@ Until that happens, the only possible solutions I see are to manually implement 
 
 There may also be a bug with Bun on arm64 devices. "bun install pinephone" seems to work only some of the time on my PinePhone Pro. Bun always reports that the install has completed, but many times the node_modules/pinephone/ folder gets created but is left empty.
 
----
+
 
 ## Contributing:
 
 ### How to contribute
 The best way to contribute is by submitting issues and/or pull requests to the [pinephone.js development repository](https://github.com/BraidenPsiuk/pinephone.js). If you would like to contribute financially, a donation would be greatly appriciated (see next section).
 
----
+
 
 ### Donations
 
