@@ -120,7 +120,7 @@ The best way to contribute is by submitting issues and/or pull requests to the [
 
 This library was developed by a sole individual of the PinePhone community - I am not affiliated with [Pine64, the company](https://www.pine64.org/)! Any donations you make here will go directly to me, not Pine64. If you are looking instead to support Pine64 (which I highly recommend, they're awesome), please consider [purchasing one of their devices](https://www.pine64.org/) or donating to them.
 
-That said, if you like pinephone.js or have found it to be a useful development tool, a donation would be greatly appriciated. Thank you!
+That said, if you like pinephone.js or your project relies on it, a donation (even a small one) would help development quite a bit. Thank you!
 
 Donate with fiat:
 
@@ -135,5 +135,5 @@ Donate with crypto:
 ---
 
 <sub><sup>
-Disclaimer: "PINE64 and the PINE64 pinecone logo are trademarked by Pine Store Limited." For more information, please visit [this webpage](https://wiki.pine64.org/wiki/PINE64_brand_and_logo). Please [contact me](mailto:mail@braiden.dev) if you have any issues or concerns involving this project's use of branding or imagery.
+DISCLAIMER: "PINE64 and the PINE64 pinecone logo are trademarked by Pine Store Limited." For more information, please visit [this webpage](https://wiki.pine64.org/wiki/PINE64_brand_and_logo). Please [contact me](mailto:mail@braiden.dev) if you have any issues or concerns involving this project's use of branding or imagery.
 </sup></sub>
