@@ -3,7 +3,7 @@
 <!-- ![Project Logo](/img/logo.png) -->
 <img src="https://raw.githubusercontent.com/BraidenPsiuk/pinephone.js/master/img/logo-with-text.png" style="width: 100%;">
 
-This is a tiny JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices.
+A tiny JavaScript library which provides a consistent API for interacting with Pine64 PinePhone devices.
 
 ![supported devices](https://img.shields.io/badge/Supported%20Phones%3A-PinePhone,%20PinePhone%20Pro-brightgreen)
 
@@ -18,6 +18,17 @@ This is a tiny JavaScript library which provides a consistent API for fetching d
 
 
 
+## Features:
+
+### Device Information
+ - Reading device model name (Is it an OG or Pro PinePhone?)
+ - Reading device model version (Which mainboard version is this?)
+### WiFi / Bluetooth
+ - Getting current statuses (Are WiFi/BT currently enabled?)
+ - Enable / Disable (Control WiFi/BT radios at software level)
+
+
+
 ## Examples:
 
 ### Importing the library
@@ -26,10 +37,10 @@ Various builds of pinephone.js are now provided. You can import the library in C
 // CommonJS (Classic node.js)
 const pinephone = require('pinephone')
 
-// ES Module, import the entire library
+// ES Module, importing the entire library
 import * as pinephone from 'pinephone'
 
-// ES Module, import only what's needed (allows tree-shaking)
+// ES Module, importing only what's needed (allows tree-shaking)
 import { getModelName, getBluetoothStatus } from 'pinephone'
 ```
 
@@ -106,14 +117,27 @@ See *src/test-scripts/read-x-accel.mjs* for example code if you are curious and 
 
 
 
-## Additional Information:
+## Developing JavaScript Apps for Mobile Linux Devices:
+
+### Current PinePhone Apps
+Many of the currently available applications that run on PinePhones weren't designed specifically for mobile devices. They can be desktop applications which were updated to be more adaptive and therefore mobile-friendly through the use of libraries such as [Gnome's libhandy](https://gitlab.gnome.org/GNOME/libhandy). Many of them are being written in C, C++, or Rust. The PinePhone community offers several ways to get started writing apps. Initially, you'll likely be faced with choosing a framework, such as GTK (Typically found on Phosh or Gnome-Mobile), or the KDE frameworks which utilize QT (common on Plasma Mobile).
+
+Your choice of framework isn't really that critical to the end-user, as most apps will build and run perfectly fine under any mobile Linux environment. You can basically just choose the framework that works best for you. When it comes to JavaScript, here are just three options to consider, with Node-GTK being my personal recommendation.
+
+### Choices for Developing Mobile Linux Apps with JavaScript
+ - [Node-GTK](https://github.com/romgrk/node-gtk) - If you prefer working entirely in JavaScript and don't want to ship an entire browser, [Node-GTK](https://github.com/romgrk/node-gtk) might be a great solution for you. It offers bindings to GTK 3 and 4, allows use of WebGTK (and therefore WebGL/GPU), and lets you make use of npm modules (something gjs does not offer). As it is GTK-based, you can build front-ends using Glade and all apps built with Node-GTK will feel right at home with other apps in Phosh or Gnome-mobile.
+ - [Tauri](https://github.com/tauri-apps/tauri) - Seems like a good step in the right direction, as it is much lighter than Electron. Tauri apps will likely not feel very at-home next to other PinePhone apps though, as it doesn't use GTK or QT styling.
+ - [Electron](https://github.com/electron/electron) - Definitely seen as an attractive option for JS devs, due to how simple it is to start developing, testing, and packaging. But Electron has **many** downsides which need to be considered. It relies on Chromium, leading to large app bundle sizes and high memory usage. Many end users don't like the idea of Chromium (owned by Google) being a requirement for their app to work. It can also cause your app to feel downright sluggish, especially on devices like the original PinePhone with it's limited memory.
 
 ### Regarding Bun
-[Bun](https://bun.sh/) is semi-supported. Getting basic device information works, and reading sensor data will also work once that is implemented, however anything involving rfkill under the hood will fail, such as reading and setting WiFi/Bluetooth states. This is because Bun hasn't implemented node's child_process API yet, and they likely won't until a clean solution is able to be implemented.
+[Bun](https://bun.sh/), an optimized JavaScript runtime using JavaScriptCore, is now supported thanks to their very recent implementation of the *child_process* API! This means that all methods will now work, even those utilizing *rfkill*, such as *getBluetoothStatus()* and *enableWifi()*!
 
-Until that happens, the only possible solutions I see are to manually implement what goes on in rfkill inside pinephone.js, which would be quite time-consuming. The other option would be to use a utility shim such as [this](https://github.com/xHyroM/bun-utilities), which allows for using exec. A fork of pinephone.js with this patch might be a good middle-ground.
+To use pinephone.js with bun, make sure bun is already installed and then run the following:
+```shell
+bun upgrade --canary
+```
 
-There may also be a bug with Bun on arm64 devices. "bun install pinephone" seems to work only some of the time on my PinePhone Pro. Bun always reports that the install has completed, but many times the node_modules/pinephone/ folder gets created but is left empty.
+As support for *child_process* was only recently added to bun, you will need to update to bun's canary release to use pinephone.js as expected. Once Bun publishes an official release with this change included (which should only be a few weeks), you will no longer need to explicitly switch to the canary version.
 
 
 

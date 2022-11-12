@@ -2,10 +2,10 @@ import * as fs from "node:fs";
 import { EventEmitter } from "node:events";
 import { getDeviceInfo } from "./model.js";
 
-const sensorEventEmitter = new EventEmitter();
-sensorEventEmitter.emit("accelX");
-sensorEventEmitter.emit("accelY");
-sensorEventEmitter.emit("accelZ");
+const eventEmitter = new EventEmitter();
+eventEmitter.emit("accelX");
+eventEmitter.emit("accelY");
+eventEmitter.emit("accelZ");
 
 const SENSOR_TYPE = "iio:device2/in_accel";
 const AXIS = "x";

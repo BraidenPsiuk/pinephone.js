@@ -2,7 +2,7 @@
   "name": "pinephone",
   "type": "module",
   "version": "0.3.5",
-  "description": "JavaScript library which provides a consistent API for fetching device info and sensor data from Pine64 PinePhone devices",
+  "description": "JavaScript library which provides a consistent API for interacting with Pine64 PinePhone devices",
   "main": "./build/pinephone.cjs",
   "module": "./build/pinephone.module.js",
   "files": [
@@ -17,6 +17,7 @@
   "scripts": {
     "build": "rollup -c utils/build/rollup.config.js",
     "sign": "echo 'sign' | gpg --clearsign",
+    
     "postbuild": "node npm-scripts/post-build.mjs"
   },
   "repository": {
@@ -26,22 +27,32 @@
   "keywords": [
     "nodejs",
     "node-js",
+
     "esm",
     "cjs",
+
     "javascript",
     "connectivity",
+
     "linux",
     "mobile-linux",
     "linux-mobile",
+
     "pine64",
     "pinephone",
     "pine-phone",
     "pinephonepro",
     "pinephone-pro",
     "pine-phone-pro",
+
     "mobian",
     "manjaro-arm",
-    "arch-linux-arm"
+    "arch-linux-arm",
+
+    "phosh",
+    "gnome-mobile",
+    "plasma-mobile",
+    "sxmo"
   ],
   "author": "BRAIDEN S. PSIUK <mail@braiden.dev> (https://braiden.dev)",
   "license": "GPL-3.0",
