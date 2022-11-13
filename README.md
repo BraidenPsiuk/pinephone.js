@@ -190,13 +190,13 @@ Your choice of framework isn't really that critical to the end-user, as most app
 
 ### Framework / Library Choices for Developing Mobile Linux Apps with JavaScript
  - [Node-GTK](https://github.com/romgrk/node-gtk) - If you prefer working entirely in JavaScript and don't want to ship an entire browser, [Node-GTK](https://github.com/romgrk/node-gtk) might be a great solution for you. It offers bindings to GTK 3 and 4, allows use of WebGTK (and therefore WebGL/GPU), and lets you make use of npm modules (something gjs does not offer). As it is GTK-based, you can build front-ends using Glade and all apps built with Node-GTK will feel right at home with other apps in Phosh or Gnome-mobile.
- - [Tauri](https://github.com/tauri-apps/tauri) - Seems like a good step in the right direction, as it is much lighter than Electron. Tauri apps will likely not feel very at-home next to other PinePhone apps though, as it doesn't use GTK or QT styling.
+ - [Tauri](https://github.com/tauri-apps/tauri) - Seems like a good step in the right direction, as it is much lighter than Electron and produces a much smaller bundle. Tauri apps will likely not feel very at-home next to other PinePhone apps though, as it doesn't use GTK or QT. Also Tauri still seems to be working on a way to bundle as a flatpak app. Tauri's "main" process is typically written in rust, and while it is [possible to use deno or node instead](https://dev.to/tauri/use-deno-to-build-a-tauri-app-1f7h), it requires some additional configuration.
  - [Electron](https://github.com/electron/electron) - Definitely seen as an attractive option for JS devs, due to how simple it is to start developing, testing, and packaging. But Electron has **many** downsides which need to be considered. It relies on Chromium, leading to large app bundle sizes and high memory usage. Many end users don't like the idea of Chromium (owned by Google) being a requirement for their app to work. It can also cause your app to feel downright sluggish, especially on devices like the original PinePhone with it's limited memory.
 
-### Regarding Bun
-[Bun](https://bun.sh/), an optimized JavaScript runtime using JavaScriptCore, is now supported thanks to their very recent implementation of the *child_process* API! This means that all methods will now work, even those utilizing *rfkill*, such as *getBluetoothStatus()* and *enableWifi()*!
+### Optimize Performance by Using Bun Instead of Node.js
+[Bun](https://bun.sh/), an optimized JavaScript runtime using JavaScriptCore, is now supported!
 
-To use pinephone.js with bun, make sure bun is already installed and then run the following:
+To use pinephone.js with bun, make sure bun is already installed (via the install script on their website), and then run the following:
 ```shell
 bun upgrade --canary
 ```
