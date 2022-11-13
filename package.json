@@ -1,7 +1,7 @@
 {
   "name": "pinephone",
   "type": "module",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "JavaScript library which provides a consistent API for interacting with Pine64 PinePhone devices",
   "main": "./build/pinephone.cjs",
   "module": "./build/pinephone.module.js",
