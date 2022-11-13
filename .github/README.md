@@ -51,7 +51,7 @@ import { getModelName, getBluetoothStatus } from 'pinephone'
 
 ### Basic usage example
 ```javascript
-import * as pinephone from 'pinephone';
+import * as pinephone from 'pinephone'
 
 pinephone.setLEDColor(pinephone.Color_YELLOW)
 pinephone.notify(`Hello, ${pinephone.getModelName()}!`, 'Hello from pinephone.js!')
