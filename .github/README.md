@@ -162,7 +162,7 @@ setInterval(() => {
     }
 }, 500)
 ```
-*Note: You cannot read the currently set color at this time, though this is definitely something that could be implemented easily. Software PWM is not possible, and likely will not be, without a faster, lower-level way to control the LEDs.*
+*Note: You cannot read the currently set color at this time, though this is definitely something that could be implemented easily. Software PWM is not possible, and likely will not be, without a faster, lower-level method of controlling the LEDs.*
 
 ### Notifications
 You can issue notifications based on the Freedesktop.org specification. The most basic notifications contain just a title/subject, but you can also add a body if you feel up for the challenge :)
