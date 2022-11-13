@@ -36,6 +36,15 @@ A tiny JavaScript library which provides a consistent API for interacting with P
 
 ## Examples:
 
+### Installing the library
+```shell
+# NPM (https://nodejs.org)
+npm install pinephone
+
+# Bun (https://bun.sh)
+bun upgrade --canary && bun install pinephone
+```
+
 ### Importing the library
 Various builds of pinephone.js are now provided. You can import the library in CommonJS or ES module format.
 ```javascript
