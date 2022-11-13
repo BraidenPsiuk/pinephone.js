@@ -1,24 +1,10 @@
 import * as fs from "node:fs";
-import { normalize, join } from "node:path";
 import { EventEmitter } from "node:events";
-import { getModelName } from "./model.js";
-
-const _ASSUME_50 = true;
-
-const SENSORS_BASE_PATH = normalize("/sys/bus/iio/devices/");
-
-if (getModelName().includes("Pro")) {
-
-} else {
-    if (!_ASSUME_50) {} else {
-        console.log("Assuming 50ms poll time for OG PinePhone accelerometer!");
-    }
-}
+import { getDeviceInfo } from "./model.js";
 
 const eventEmitter = new EventEmitter();
 eventEmitter.emit("accelX");
 eventEmitter.emit("accelY");
-eventEmitter.emit("accelZ");
 eventEmitter.emit("accelZ");
 
 const SENSOR_TYPE = "iio:device2/in_accel";

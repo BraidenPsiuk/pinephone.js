@@ -1,7 +1,7 @@
 # pinephone.js (GitHub)
 
 <!-- ![Project Logo](/img/logo.png) -->
-<img src="https://raw.githubusercontent.com/BraidenPsiuk/pinephone.js/master/img/logo-with-text.png" style="width: 100%;">
+<img src="https://raw.githubusercontent.com/BraidenPsiuk/pinephone.js/master/img/logos/logo-with-text.png" style="width: 100%;">
 
 A tiny JavaScript library which provides a consistent API for interacting with Pine64 PinePhone devices.
 
@@ -26,6 +26,9 @@ A tiny JavaScript library which provides a consistent API for interacting with P
 ### WiFi / Bluetooth
  - Getting current statuses (Are WiFi/BT currently enabled?)
  - Enable / Disable (Control WiFi/BT radios at software level)
+ ### RGB LEDs
+  - Toggling individual status LEDs (R, G, and B LEDs located at the top-left of the phone)
+  - Set status color (*white, red, yellow, green, cyan, purple, blue, black/off*)
 
 
 
@@ -46,8 +49,14 @@ import { getModelName, getBluetoothStatus } from 'pinephone'
 
 ### Basic usage example
 ```javascript
-// Usage example still needed
-// See below for other examples
+import * as pinephone from 'pinephone';
+
+pinephone.setLEDColor(pinephone.Color_YELLOW)
+pinephone.notify(`Hello, ${pinephone.getModelName()}!`, 'Hello from pinephone.js!')
+
+console.log('Device information:', pinephone.getDeviceInfo())
+console.log('WiFi status:', pinephone.getWifiStatus())
+console.log('Bluetooth status:', pinephone.getBluetoothStatus())
 ```
 
 ### Getting device information
@@ -108,6 +117,48 @@ pinephone.enableBluetooth()
 pinephone.disableBluetooth()
 ```
 
+### Controlling RGB LEDs
+There is a group of three status LEDs located at the top-left corner of the device. Since they are grouped closely together, toggling certain LEDs lets you "mix" the R, G, and B LEDs to produce a few other colors. You have a few options for controlling these status LEDs:
+```javascript
+// Different method for each action
+pinephone.enableRedLED()
+pinephone.disableRedLED()
+
+// Passing in a boolean (similar to Arduio's digitalWrite function)
+pinephone.enableGreenLED(true)
+pinephone.enableGreenLED(false)
+
+// Pass in colors as pinephone.js constants
+pinephone.setLEDColor(pinephone.Color_WHITE)
+pinephone.setLEDColor(pinephone.Color_BLACK) // Color_OFF works too
+
+// Pass in colors as strings
+pinephone.setLEDColor('yellow')
+pinephone.setLEDColor('black') // 'off' works too
+```
+
+Here is a simple example showing how to blink between two colors, once per second:
+```javascript
+let enabled = false
+setInterval(() => {
+    enabled = !enabled
+    if (enabled) {
+        pinephone.setLEDColor(pinephone.Color_BLUE)
+    } else {
+        pinephone.setLEDColor(pinephone.Color_YELLOW)
+    }
+}, 500)
+```
+*Note: You cannot read the currently set color at this time, though this is definitely something that could be implemented easily. Software PWM is not possible, and likely will not be, without a faster, lower-level way to control the LEDs.*
+
+### Notifications
+You can issue notifications based on the Freedesktop.org specification. The most basic notifications contain just a title/subject, but you can also add a body if you feel up for the challenge :)
+```javascript
+pinephone.notify('Title Text')
+pinephone.notify('Title Text', 'Body text - feeling adventurous today!')
+```
+<img src="https://raw.githubusercontent.com/BraidenPsiuk/pinephone.js/master/img/examples/notifications.png" style="width: 50%;">
+
 ### Getting sensor data
 Sensor data is accessed via EventEmitter events. By default, sensors are sampled every 50ms.
 
@@ -117,14 +168,14 @@ See *src/test-scripts/read-x-accel.mjs* for example code if you are curious and 
 
 
 
-## Developing JavaScript Apps for Mobile Linux Devices:
+## Developing Apps for Mobile Linux Devices in JavaScript:
 
 ### Current PinePhone Apps
 Many of the currently available applications that run on PinePhones weren't designed specifically for mobile devices. They can be desktop applications which were updated to be more adaptive and therefore mobile-friendly through the use of libraries such as [Gnome's libhandy](https://gitlab.gnome.org/GNOME/libhandy). Many of them are being written in C, C++, or Rust. The PinePhone community offers several ways to get started writing apps. Initially, you'll likely be faced with choosing a framework, such as GTK (Typically found on Phosh or Gnome-Mobile), or the KDE frameworks which utilize QT (common on Plasma Mobile).
 
 Your choice of framework isn't really that critical to the end-user, as most apps will build and run perfectly fine under any mobile Linux environment. You can basically just choose the framework that works best for you. When it comes to JavaScript, here are just three options to consider, with Node-GTK being my personal recommendation.
 
-### Choices for Developing Mobile Linux Apps with JavaScript
+### Framework / Library Choices for Developing Mobile Linux Apps with JavaScript
  - [Node-GTK](https://github.com/romgrk/node-gtk) - If you prefer working entirely in JavaScript and don't want to ship an entire browser, [Node-GTK](https://github.com/romgrk/node-gtk) might be a great solution for you. It offers bindings to GTK 3 and 4, allows use of WebGTK (and therefore WebGL/GPU), and lets you make use of npm modules (something gjs does not offer). As it is GTK-based, you can build front-ends using Glade and all apps built with Node-GTK will feel right at home with other apps in Phosh or Gnome-mobile.
  - [Tauri](https://github.com/tauri-apps/tauri) - Seems like a good step in the right direction, as it is much lighter than Electron. Tauri apps will likely not feel very at-home next to other PinePhone apps though, as it doesn't use GTK or QT styling.
  - [Electron](https://github.com/electron/electron) - Definitely seen as an attractive option for JS devs, due to how simple it is to start developing, testing, and packaging. But Electron has **many** downsides which need to be considered. It relies on Chromium, leading to large app bundle sizes and high memory usage. Many end users don't like the idea of Chromium (owned by Google) being a requirement for their app to work. It can also cause your app to feel downright sluggish, especially on devices like the original PinePhone with it's limited memory.
@@ -137,7 +188,7 @@ To use pinephone.js with bun, make sure bun is already installed and then run th
 bun upgrade --canary
 ```
 
-As support for *child_process* was only recently added to bun, you will need to update to bun's canary release to use pinephone.js as expected. Once Bun publishes an official release with this change included (which should only be a few weeks), you will no longer need to explicitly switch to the canary version.
+As support for *child_process* was only recently added to bun, you will need to update to bun's canary release to use pinephone.js as expected. Once Bun publishes an official release with this change included (which should only be a few weeks), you will no longer need to explicitly switch to their canary version.
 
 
 
