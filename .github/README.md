@@ -150,10 +150,12 @@ pinephone.setLEDColor('black') // 'off' works too
 
 Here is a simple example showing how to blink between two colors, once per second:
 ```javascript
-let enabled = false
+import * as pinephone from 'pinephone'
+
+let toggle = false
 setInterval(() => {
-    enabled = !enabled
-    if (enabled) {
+    toggle = !toggle
+    if (toggle) {
         pinephone.setLEDColor(pinephone.Color_BLUE)
     } else {
         pinephone.setLEDColor(pinephone.Color_YELLOW)
