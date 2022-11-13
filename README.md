@@ -29,7 +29,7 @@ A tiny JavaScript library which provides a consistent API for interacting with P
 ### RGB LEDs
  - Toggling individual status LEDs (R, G, and B LEDs located at the top-left of the phone)
  - Set status color (*white, red, yellow, green, cyan, purple, blue, black/off*)
-### Notifications
+### Issuing Notifications
  - Create notifications with titles and optional bodies (bodies can only be viewed while the phone is unlocked)
 
 
