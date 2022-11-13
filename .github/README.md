@@ -26,9 +26,11 @@ A tiny JavaScript library which provides a consistent API for interacting with P
 ### WiFi / Bluetooth
  - Getting current statuses (Are WiFi/BT currently enabled?)
  - Enable / Disable (Control WiFi/BT radios at software level)
- ### RGB LEDs
-  - Toggling individual status LEDs (R, G, and B LEDs located at the top-left of the phone)
-  - Set status color (*white, red, yellow, green, cyan, purple, blue, black/off*)
+### RGB LEDs
+ - Toggling individual status LEDs (R, G, and B LEDs located at the top-left of the phone)
+ - Set status color (*white, red, yellow, green, cyan, purple, blue, black/off*)
+### Notifications
+ - Create notifications with titles and optional bodies (bodies can only be viewed while the phone is unlocked)
 
 
 
@@ -157,7 +159,7 @@ You can issue notifications based on the Freedesktop.org specification. The most
 pinephone.notify('Title Text')
 pinephone.notify('Title Text', 'Body text - feeling adventurous today!')
 ```
-<img src="https://raw.githubusercontent.com/BraidenPsiuk/pinephone.js/master/img/examples/notifications.png" style="width: 50%;">
+<img src="https://raw.githubusercontent.com/BraidenPsiuk/pinephone.js/master/img/examples/notifications.png" style="width: 20%;">
 
 ### Getting sensor data
 Sensor data is accessed via EventEmitter events. By default, sensors are sampled every 50ms.
