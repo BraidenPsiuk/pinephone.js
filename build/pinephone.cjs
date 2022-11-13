@@ -23,7 +23,7 @@ const Color_CYAN = "cyan";
 const Color_PURPLE = "purple";
 const Color_BLUE = "blue";
 const Color_BLACK = "black";
-const Color_OFF$1 = "off";
+const Color_OFF = "off";
 
 const getModelName = ()=>{
 // PinePhone MODEL strings (returned from "cat /sys/firmware/devicetree/base/model")
@@ -281,7 +281,7 @@ exports.Color_BLACK = Color_BLACK;
 exports.Color_BLUE = Color_BLUE;
 exports.Color_CYAN = Color_CYAN;
 exports.Color_GREEN = Color_GREEN;
-exports.Color_OFF = Color_OFF$1;
+exports.Color_OFF = Color_OFF;
 exports.Color_PURPLE = Color_PURPLE;
 exports.Color_RED = Color_RED;
 exports.Color_WHITE = Color_WHITE;

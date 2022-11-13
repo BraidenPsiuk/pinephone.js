@@ -21,7 +21,7 @@ const Color_CYAN = "cyan";
 const Color_PURPLE = "purple";
 const Color_BLUE = "blue";
 const Color_BLACK = "black";
-const Color_OFF$1 = "off";
+const Color_OFF = "off";
 
 const getModelName = ()=>{
 // PinePhone MODEL strings (returned from "cat /sys/firmware/devicetree/base/model")
@@ -273,4 +273,4 @@ const notify = (subject, body) => {
         execSync(`notify-send "${subject}"${body?` "${body}"`:""}`);
 };
 
-export { BluetoothHardwareSwitch_State, BluetoothSoftwareSwitch_State, Color_BLACK, Color_BLUE, Color_CYAN, Color_GREEN, Color_OFF$1 as Color_OFF, Color_PURPLE, Color_RED, Color_WHITE, Color_YELLOW, Model_Name, Model_VersionNumber, ModemFirmware_Name, ModemFirmware_VersionNumber, _getRawWirelessInfo, disableBlueLED, disableBluetooth, disableGreenLED, disableRedLED, disableWifi, enableBlueLED, enableBluetooth, enableGreenLED, enableRedLED, enableWifi, getBluetoothStatus, getDeviceInfo, getModelName, getModelVersion, getWifiStatus, notify, setLEDColor };
+export { BluetoothHardwareSwitch_State, BluetoothSoftwareSwitch_State, Color_BLACK, Color_BLUE, Color_CYAN, Color_GREEN, Color_OFF, Color_PURPLE, Color_RED, Color_WHITE, Color_YELLOW, Model_Name, Model_VersionNumber, ModemFirmware_Name, ModemFirmware_VersionNumber, _getRawWirelessInfo, disableBlueLED, disableBluetooth, disableGreenLED, disableRedLED, disableWifi, enableBlueLED, enableBluetooth, enableGreenLED, enableRedLED, enableWifi, getBluetoothStatus, getDeviceInfo, getModelName, getModelVersion, getWifiStatus, notify, setLEDColor };
