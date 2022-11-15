@@ -3,7 +3,7 @@ import { normalize, join } from "node:path";
 import { getModelName } from "./model.js";
 import { Color_BLACK, Color_BLUE, Color_CYAN, Color_GREEN, Color_PURPLE, Color_RED, Color_WHITE, Color_YELLOW, Color_OFF } from "./constants.js";
 
-const MODEL_NAME = getModelName();
+const IS_PRO = getModelName().includes("Pro");
 
 const LEDS_BASE_PATH = normalize("/sys/class/leds/");
 const LEDS_BRIGHTNESS_PATH = "./brightness";
@@ -19,14 +19,14 @@ const LEDS_BLUE_NAME_PRO = "blue\:indicator";
 
 export const enableRedLED = (toEnable) => {
     toEnable = (toEnable===undefined)?true:toEnable;
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_RED_NAME_PRO, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     } else {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_RED_NAME_OG, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     }
 };
 export const disableRedLED = () => {
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_RED_NAME_PRO, LEDS_BRIGHTNESS_PATH), "0");
     } else {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_RED_NAME_OG, LEDS_BRIGHTNESS_PATH), "0");
@@ -35,14 +35,14 @@ export const disableRedLED = () => {
 
 export const enableGreenLED = (toEnable) => {
     toEnable = (toEnable===undefined)?true:toEnable;
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_GREEN_NAME_PRO, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     } else {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_GREEN_NAME_OG, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     }
 };
 export const disableGreenLED = () => {
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_GREEN_NAME_PRO, LEDS_BRIGHTNESS_PATH), "0");
     } else {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_GREEN_NAME_OG, LEDS_BRIGHTNESS_PATH), "0");
@@ -51,14 +51,14 @@ export const disableGreenLED = () => {
 
 export const enableBlueLED = (toEnable) => {
     toEnable = (toEnable===undefined)?true:toEnable;
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_BLUE_NAME_PRO, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     } else {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_BLUE_NAME_OG, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     }
 };
 export const disableBlueLED = () => {
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_BLUE_NAME_PRO, LEDS_BRIGHTNESS_PATH), "0");
     } else {
         writeFileSync(join(LEDS_BASE_PATH, LEDS_BLUE_NAME_OG, LEDS_BRIGHTNESS_PATH), "0");

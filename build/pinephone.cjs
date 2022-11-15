@@ -151,7 +151,7 @@ const disableBluetooth = () => {
     node_child_process.execSync("rfkill block bluetooth");
 };
 
-const MODEL_NAME = getModelName();
+const IS_PRO = getModelName().includes("Pro");
 
 const LEDS_BASE_PATH = node_path.normalize("/sys/class/leds/");
 const LEDS_BRIGHTNESS_PATH = "./brightness";
@@ -167,14 +167,14 @@ const LEDS_BLUE_NAME_PRO = "blue\:indicator";
 
 const enableRedLED = (toEnable) => {
     toEnable = (toEnable===undefined)?true:toEnable;
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_RED_NAME_PRO, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     } else {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_RED_NAME_OG, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     }
 };
 const disableRedLED = () => {
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_RED_NAME_PRO, LEDS_BRIGHTNESS_PATH), "0");
     } else {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_RED_NAME_OG, LEDS_BRIGHTNESS_PATH), "0");
@@ -183,14 +183,14 @@ const disableRedLED = () => {
 
 const enableGreenLED = (toEnable) => {
     toEnable = (toEnable===undefined)?true:toEnable;
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_GREEN_NAME_PRO, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     } else {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_GREEN_NAME_OG, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     }
 };
 const disableGreenLED = () => {
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_GREEN_NAME_PRO, LEDS_BRIGHTNESS_PATH), "0");
     } else {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_GREEN_NAME_OG, LEDS_BRIGHTNESS_PATH), "0");
@@ -199,14 +199,14 @@ const disableGreenLED = () => {
 
 const enableBlueLED = (toEnable) => {
     toEnable = (toEnable===undefined)?true:toEnable;
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_BLUE_NAME_PRO, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     } else {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_BLUE_NAME_OG, LEDS_BRIGHTNESS_PATH), toEnable ? "1":"0");
     }
 };
 const disableBlueLED = () => {
-    if (MODEL_NAME.includes("Pro")) {
+    if (IS_PRO) {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_BLUE_NAME_PRO, LEDS_BRIGHTNESS_PATH), "0");
     } else {
         fs.writeFileSync(node_path.join(LEDS_BASE_PATH, LEDS_BLUE_NAME_OG, LEDS_BRIGHTNESS_PATH), "0");
